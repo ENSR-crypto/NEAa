@@ -1,0 +1,99 @@
+<html>
+<body>
+<!--Title for the tab-->
+<title>NEA</title>
+
+<style>
+    body {
+
+        /*change bg colour here*/
+        background-color:#444444;
+    }
+    /*border-radius makes them circular, change as preffered*/
+    .title {
+        font-family: 'Brush Script MT', cursive;
+        background-color:#327BC4;
+        border:2px solid #000000;
+        font-size:400%;
+        text-align:center;
+        margin: auto;
+        width: 750px;
+        border-radius:10px;
+        color:#FFFFFF;
+    }
+
+    /*flexbox, margin and center attributes used to place buttons in the correct position. Other attributes to make the button look according to diagram.. */
+    .button {
+        font-family: 'Brush Script MT', cursive;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        padding: 30px;
+        width: 750px;
+        font-size: 350%;
+        background-color: #000080;
+        color: #FFFFFF;
+        border-width: 7px;
+        border-radius:10px;     
+    }
+    /*Removes underline from boxes.*/
+    .link {
+        text-decoration:none;
+    }
+
+    .backdrop {
+        background-color: #888888;
+        width: 1000px;
+        height:650px;
+        margin: auto;
+        padding-top: 20px;
+        border-radius:10px;
+
+    }
+    .filler {
+        /*used to move div down on page, change height to move further*/
+        height:120px;
+    }
+
+</style>
+<!--Filler class (see above)-->
+<div class="filler"></div>
+
+<!--added this div to store the buttons/title, lets me make the grey background from the wireframe.-->
+<div class="backdrop">
+
+    <!--Game Title-->
+    <h1 class="title">
+        Alfie's Cool NEA Game
+    </h1>
+
+
+    <h1>
+
+    <!--button links to screen 2.-->
+    <a href="/new" class="link">
+        <!--assigns properties above  to the link.-->
+        <button class="button">
+            New Run
+        </button>
+    </a>
+
+    </h1>
+
+
+    <h1>
+
+    <!--Now links to the correct page-->
+    <a href="/login" class="link">
+        <!--assigns properties above to the link.-->
+        <button class="button">
+            Load Run
+        </button>
+    </a>
+
+    </h1>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<html>
+<body>
+<!--Title for the tab-->
+<title>NEA</title>
+
+<style>
+    body {
+
+        /*change bg colour here*/
+        background-color:#444444;
+    }
+    /*border-radius makes them circular, change as preffered*/
+    .title {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+
+        font-family: 'Brush Script MT', cursive;
+        background-color:#327BC4;
+        border:2px solid #000000;
+        font-size:400%;
+        text-align:center;
+        width: 350px;
+        border-radius:10px;
+        color:#FFFFFF;
+    }
+
+    /*flexbox, margin and center attributes used to place buttons in the correct position. Other attributes to make the button look according to diagram.. */
+    .button {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        font-family: 'Brush Script MT', cursive;
+        width: 400px;
+        height: 100px;
+        padding: 10px;
+        font-size: 300%;
+        background-color: #000080;
+        color: #ffffff;
+        border-width: 7px;
+        border-radius:10px;     
+    }
+
+
+    /*Removes underline from boxes.*/
+    .link {
+        text-decoration:none;
+    }
+
+    .backdrop {
+        display: flex;
+        background-color: #888888;
+        width: 1000px;
+        height:800px;
+        margin: auto;
+        padding-top: 20px;
+        border-radius:10px;
+
+    }
+    .filler {
+        /*used to move div down on page, change height to move further*/
+        height:60px;
+    }
+    .newGameBox {
+        opacity: 0.5;
+        position: absolute;
+        bottom:700px;
+        display: flex;
+        width: 1000px;
+        height:150px;
+        margin: auto;
+        padding-top: 20px;    
+    }
+
+    .seedBox {
+        opacity: 0.5;
+        position: absolute;
+        bottom:475px;
+        display: flex;
+        width: 1000px;
+        height:200px;
+        margin: auto;
+        padding-top: 20px;        
+    }
+
+    .textBox {
+        display: flex;
+        justify-content: center;
+        opacity: 0.5;
+        position: absolute;
+        bottom:330px;
+        display: flex;
+        width: 1000px;
+        height: 100px;
+        margin: auto;
+        padding-top: 20px;        
+        }
+
+    .startBox {
+        opacity: 0.5;
+        position: absolute;
+        bottom:100px;
+        display: flex;
+        width: 1000px;
+        height: 200px;
+        margin: auto;
+        padding-top: 20px;        
+        }
+
+
+        .seedInput {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            font-family: 'Brush Script MT', cursive;
+            width: 134px;
+            height: 50px;
+            padding: 10px;
+            font-size: 140%;
+            align-items: center;
+            color: #FFFFFF;
+            background-color:#000080;
+            border-width: 2px;
+            border-radius:5px;      
+        }
+
+
+        .textInputGuide {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+    
+            font-family: 'Brush Script MT', cursive;
+            background-color:#000080;
+            border:2px solid #000000;
+            font-size:125%;
+            text-align:center;
+            width: 350px;
+            height: 30px;
+            border-radius:10px;
+            color:#FFFFFF;
+
+        }
+
+
+
+
+</style>
+
+
+<!--Filler class (see .filler)-->
+<div class="filler"></div>
+<!--added this div to store the buttons/title, lets me make the grey background from the wireframe.-->
+<div class="backdrop">
+
+    <div class="newGameBox">
+        <h1 class="title">
+            New Game
+        </h1>
+    </div>
+
+
+    <div class="seedBox">
+        <!--Fix ts twin </3-->
+        <button class="button" id="random" onclick="randomPressed()">
+            Random Seed
+        </button>
+
+
+        <button class="button" id="custom" onclick="customPressed()">
+            Custom Seed
+        </button>
+    </div>
+
+
+    <div class="textBox">
+
+
+
+        <form>
+        <label id="seedEntryDesc" class="textInputGuide">Enter a 8 digit number to use a seed.</label>
+        <input id="seedEntry" class = "seedInput" type="tel" pattern="[0-9]{8}" maxlength="8" >
+        </form>
+    </div>
+
+
+    <div class="startBox">
+        <button class="button" id="startRunButton">
+            Start Run
+        </button>
+    </div>
+</div>
+
+
+<script>
+    let random = document.getElementById("random");
+    let custom = document.getElementById("custom");
+    
+    let seedEntry = document.getElementById("seedEntry");
+
+    function getSeed() {
+        //seed currently doesnt choose numbers 0-9999999, either fix (add zeroes after) or make future algorithmns (map, enemies, etc.) with it in mind.
+        var randomSeed = Math.floor(Math.random() * (99999999 - 10000000) + 10000000);
+        return randomSeed;
+    }
+    function randomPressed() {
+
+
+        //changes random and custom buttons to new looks
+        //bugfix alert
+        //alert("ranRand")
+
+
+        
+        custom.style.background = "#000080";
+        custom.style.color = "FFFFFF";
+        custom.disabled = false;
+
+        random.style.background = "#000000";
+        random.style.color = "222222";
+        random.disabled = true;
+
+        //technically irrelevant on first press, but cant think of way to avoid it.
+        custom.disabled = false;
+
+        //generates seed and shows it to user, and enables start run button
+        let seed = getSeed();
+
+        seedEntry.value = seed;
+        seedEntry.disabled = true
+    }
+
+    function customPressed() {
+
+        //bugfix alert
+        //alert("ranCust")
+
+
+
+        random.style.background = "#000080";
+        random.style.color = "FFFFFF";
+        random.disabled = false;
+
+        custom.style.background = "#000000";
+        custom.style.color = "222222";
+        custom.disabled = true;
+        
+        //re-enables seedEntry
+        seedEntry.value = ""
+        seedEntry.disabled = false
+    }
+</script>
+
+</body>
+</html>
